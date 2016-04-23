@@ -8,7 +8,41 @@
  * Controller of the leftOrRightApp
  */
 angular.module('leftOrRightApp')
-  .controller('MainCtrl', function ($scope, $timeout, localStorageService) {
+  .factory('dataAccessService', ['localStorageService', function(localStorageService) {
+    
+    var zeroData = {
+      left: [],
+      right: []
+    };
+      
+    function getStoredData() {
+      return localStorageService.get('data') || zeroData;
+    }
+    
+    function updateStoredData(d) {
+      localStorageService.set('data', d);
+    }
+    
+    return {
+      getData: function() { 
+        return getStoredData(); 
+      },
+      incrementLeft: function() { 
+        var d = getStoredData();
+        d.left.push(new Date());
+        updateStoredData(d);
+      },
+      incrementRight: function() {
+        var d = getStoredData();
+        d.right.push(new Date());
+        updateStoredData(d);
+      },
+      resetData: function() {
+        updateStoredData(zeroData);
+      }
+    };
+  }])
+  .controller('MainCtrl', function (dataAccessService, $scope, $timeout) {
     
     $scope.currentlyLeft = 0 === Math.round(Math.random());
     $scope.getCurrentSide = function() {
@@ -27,21 +61,9 @@ angular.module('leftOrRightApp')
     }
     setFigCaption();
     
-    $scope.data = localStorageService.get('data') || {
-      left: [],
-      right: []
-    };
-
-    $scope.$watch('data', function () {
-      localStorageService.set('data', $scope.data);
-    }, true);
-    
-    $scope.incrementLeft = function() {
-      $scope.data.left.push(new Date());
-    };
-
-    $scope.incrementRight = function() {
-      $scope.data.right.push(new Date());
-    };
+    $scope.data = function() { return dataAccessService.getData(); };
+    $scope.incrementLeft = function() { dataAccessService.incrementLeft(); };
+    $scope.incrementRight = function() { dataAccessService.incrementRight(); };
+    $scope.reset = function() { dataAccessService.resetData(); };
 
 });

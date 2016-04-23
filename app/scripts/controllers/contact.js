@@ -8,10 +8,10 @@
  * Controller of the leftOrRightApp
  */
 angular.module('leftOrRightApp')
-  .controller('ContactCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('ContactCtrl', function ($scope) {
+
+    $scope.address = {
+      github: "https://github.com/cblanks"
+    };
+
   });

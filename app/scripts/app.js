@@ -28,6 +28,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/results', {
+        templateUrl: 'views/results.html',
+        controller: 'ResultsCtrl',
+        controllerAs: 'results'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
@@ -44,9 +49,10 @@ angular
   })
   .controller('AppCtrl', function ($scope) {
     $scope.pages = [
-      { title: 'Home',    id: '',        isSelected: true },
-      { title: 'About',   id: 'about',   isSelected: false },
-      { title: 'Contact', id: 'contact', isSelected: false }
+      { title: 'Experiment', id: '',        isSelected: true },
+      { title: 'Results',    id: 'results', isSelected: false },
+      { title: 'About',      id: 'about',   isSelected: false },
+      { title: 'Contact',    id: 'contact', isSelected: false }
     ];
     $scope.selectPage = function(i) {
       $scope.pages.forEach(function(page) {
@@ -54,4 +60,5 @@ angular
       });
       $scope.pages[i].isSelected = true;
     };
+    $scope.selectPage(0);
   });

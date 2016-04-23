@@ -1,6 +1,6 @@
 <div class="text-center">
   <h1>Let's experiment</h1>
-  <p>Which nostril are you breathing from right now?  Left or Right?</p>
+  <p>Which nostril are you breathing most strongly from right now?  Hit left ( <span class="glyphicon glyphicon-hand-left"></span> ) or right ( <span class="glyphicon glyphicon-hand-right"></span> ).</p>
 <div>
 
 <hr>
@@ -10,21 +10,28 @@
     <div class="col-xs-3">
       <button ng-click="incrementLeft()" 
         type="button" class="btn btn-primary btn-lg btn-block">
-        Left <span class="badge">{{ data.left.length }}</span>
+        <span class="glyphicon glyphicon-hand-left"></span> <span class="badge">{{ data().left.length }}</span>
       </button>
     </div>
 
     <div class="col-xs-6">
-    <figure class="figure">
-      <img src="images/nose.jpg" alt="$scope.figCaption" class="img-rounded img-fluid figure-image" width="100%">
-      <figcaption class="figure-caption">{{ figCaption }}</figcaption>
-    </figure>
+      <figure class="figure">
+        <img src="images/nose.jpg" alt="$scope.figCaption" class="img-rounded img-fluid figure-image" width="100%">
+        <figcaption class="figure-caption">{{ figCaption }}</figcaption>
+      </figure>
+      
+      <hr>
+      
+      <button ng-click="reset()" 
+        type="button" class="btn btn-warning btn-center">
+        <span class="glyphicon glyphicon-refresh"></span> Reset
+      </button>
     </div>
 
     <div class="col-xs-3">
       <button ng-click="incrementRight()" 
         type="button" class="btn btn-info btn-lg btn-block">
-        Right <span class="badge">{{ data.right.length }}</span>
+        <span class="badge">{{ data().right.length }}</span> <span class="glyphicon glyphicon-hand-right">
       </button>
     </div>
   </div>

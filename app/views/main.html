@@ -1,23 +1,31 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="text-center">
+  <h1>Let's experiment</h1>
+  <p>Which nostril are you breathing from right now?  Left or Right?</p>
+<div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+<hr>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <button ng-click="incrementLeft()" 
+        type="button" class="btn btn-primary btn-lg btn-block">
+        Left <span class="badge">{{ data.left.length }}</span>
+      </button>
+    </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    <div class="col-xs-6">
+    <figure class="figure">
+      <img src="images/nose.jpg" alt="$scope.figCaption" class="img-rounded img-fluid figure-image" width="100%">
+      <figcaption class="figure-caption">{{ figCaption }}</figcaption>
+    </figure>
+    </div>
+
+    <div class="col-xs-3">
+      <button ng-click="incrementRight()" 
+        type="button" class="btn btn-info btn-lg btn-block">
+        Right <span class="badge">{{ data.right.length }}</span>
+      </button>
+    </div>
+  </div>
 </div>

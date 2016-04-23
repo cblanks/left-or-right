@@ -29,7 +29,25 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
+      })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .controller('AppCtrl', function ($scope) {
+    $scope.pages = [
+      { title: 'Home',    id: '',        isSelected: true },
+      { title: 'About',   id: 'about',   isSelected: false },
+      { title: 'Contact', id: 'contact', isSelected: false }
+    ];
+    $scope.selectPage = function(i) {
+      $scope.pages.forEach(function(page) {
+        page.isSelected = false;
+      });
+      $scope.pages[i].isSelected = true;
+    };
   });

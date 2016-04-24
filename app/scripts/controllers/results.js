@@ -10,6 +10,17 @@
 angular.module('leftOrRightApp')
   .controller('ResultsCtrl', function (dataAccessService, $scope) {
     
-    console.log(dataAccessService.getData());
+/*
+    $scope.minDuration = {
+      left: 50,
+      right: 80
+    };
 
-});
+    $scope.maxDuration = {
+      left: 390,
+      right: 420
+    };
+ */
+    $scope.dataset = dataAccessService.getData();
+  }
+);

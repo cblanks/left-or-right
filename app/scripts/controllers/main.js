@@ -8,40 +8,6 @@
  * Controller of the leftOrRightApp
  */
 angular.module('leftOrRightApp')
-  .factory('dataAccessService', ['localStorageService', function(localStorageService) {
-    
-    var zeroData = {
-      left: [],
-      right: []
-    };
-      
-    function getStoredData() {
-      return localStorageService.get('data') || zeroData;
-    }
-    
-    function updateStoredData(d) {
-      localStorageService.set('data', d);
-    }
-    
-    return {
-      getData: function() { 
-        return getStoredData(); 
-      },
-      incrementLeft: function() { 
-        var d = getStoredData();
-        d.left.push(new Date());
-        updateStoredData(d);
-      },
-      incrementRight: function() {
-        var d = getStoredData();
-        d.right.push(new Date());
-        updateStoredData(d);
-      },
-      resetData: function() {
-        updateStoredData(zeroData);
-      }
-    };
-  }])
   .controller('MainCtrl', function (dataAccessService, $scope, $timeout) {
     
     $scope.currentlyLeft = 0 === Math.round(Math.random());
